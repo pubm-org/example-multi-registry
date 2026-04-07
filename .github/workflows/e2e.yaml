@@ -29,10 +29,10 @@ jobs:
           node -e "
             const fs = require('fs');
             const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
-            pkg.version = '${VERSION}';
+            pkg.version = process.env.VERSION;
             fs.writeFileSync('package.json', JSON.stringify(pkg, null, 2));
             const jsr = JSON.parse(fs.readFileSync('jsr.json', 'utf8'));
-            jsr.version = '${VERSION}';
+            jsr.version = process.env.VERSION;
             fs.writeFileSync('jsr.json', JSON.stringify(jsr, null, 2));
           "
 
